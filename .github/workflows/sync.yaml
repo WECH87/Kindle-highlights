@@ -10,7 +10,7 @@ jobs:
       - name: Sync highlights
         uses: addnab/docker-run-action@v3
         with:
-          image: ghcr.io/arkalim/kindle-to-notion:master
+          image: ghcr.io/arkalim/kindle-to-notion:simplifying-regex
           run: node /code/dist/main.js
           options: |
             -v ${{ github.workspace }}:/code/resources 
@@ -18,9 +18,8 @@ jobs:
             -e NOTION_API_KEY=${{ secrets.NOTION_API_KEY }}
 
       - name: Commit cache changes
-        uses: EndBug/add-and-commit@v9
+        uses: EndBug/add-and-commit@v7
         with:
-        with: node16
           message: Commit cache changes
           add: sync.json
 
